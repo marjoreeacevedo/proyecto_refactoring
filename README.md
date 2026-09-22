@@ -1,62 +1,46 @@
-# Proyecto de Refactoring - Películas y Series
+# Proyecto Refactoring — Películas y Series
 
-Proyecto educativo con malas prácticas intencionales para practicar refactoring.
+App de consola que busca películas (OMDB) y series (TVMaze), guarda favoritas e
+historial, y exporta/importa a JSON. Proyecto educativo: partió con malas
+prácticas intencionales y se está refactorizando por fases, con cambios
+pequeños y fáciles de entender.
 
-## Objetivo
+## Estructura (núcleo)
 
-Conectar a APIs públicas de películas (OMDB y TVMaze) sin requerir API keys. El código está intencionalmente lleno de malas prácticas para que los estudiantes practiquen refactoring.
+| Archivo   | Rol                                                        |
+| --------- | ---------------------------------------------------------- |
+| `main.py` | Menú en consola e interfaz con el usuario                  |
+| `api_movies.py` | Llamadas a OMDB/TVMaze, favoritas, historial, caché  |
+| `config.py` | Ajustes compartidos (`debug`, `verbose`, `timeout`)      |
+| `constants.py` | Valores fijos (URLs, API key demo, timeout por defecto) |
+| `requirements.txt` | Dependencias (`requests`)                           |
+| `docs/`   | Documentación del análisis y del plan (PDF)                |
 
-## Malas Prácticas Incluidas
+## Refactorizado — FASE 2 (aplicado y verificado)
 
-### Arquitectura
-- Variables globales en todas partes
-- Sin separación de responsabilidades
-- Sin principio SOLID
-- Archivos de configuración excesivos (~60+ archivos `*_config.py`)
+- `config.py` central reemplaza los 88 `*_config.py` (archivados en `legacy_config/`, fuera de este repo).
+- `constants.py` reúne URLs, API key y defaults (se eliminaron `API_KEY_TMDB`/`BASE_URL_TMDB`, muertas).
+- Sin `from api_movies import *`: `main.py` usa imports explícitos.
+- 48 concatenaciones convertidas a f-strings.
+- 31 funciones con type hints básicos (`str, int, bool, dict, list, None, Optional`).
+- Sin cambios de comportamiento: verificado con prueba de humo (config compartida, favoritas, export/import JSON).
 
-### Código
-- Sin type hints
-- Sin manejo de errores adecuado
-- `from api_movies import *` (wildcard import)
-- Strings hardcodeados
-- Duplicación de código extrema
-- Sin documentación
-- `bare except:` clauses
-- Argumentos mutables por defecto
+## Pendiente (próximas fases)
 
-### Estructura
-- ~100 archivos Python en un solo directorio
-- Múltiples implementaciones del mismo módulo (logger.py, log_manager.py)
-- Configuración de caché de API con ~50+ archivos `api_cache_*_config.py`
-- Sin tests unitarios
-- Sin requirements.txt
-- Sin virtual environment
+- `app.py` duplicado de `main.py` + `api_movies.py`: elegir un ganador.
+- `bare except:` en `mostrar_pelicula` e importar → usar `.get()` y excepciones concretas.
+- Validar red (`hacer_request`), archivos (export/import) y entradas (`int(input)`).
+- Bucles `while i` → `for/enumerate`; helper `pausa()` para el texto repetido.
+- Tests unitarios.
 
-### Seguridad
-- Contraseñas en texto plano
-- Sin validación de entrada
-- Sin logging con módulo `logging`
+## APIs utilizadas
 
-## APIs Utilizadas
+- **OMDB API**: demo key `"trilogy"` (pública, sin registro).
+- **TVMaze API**: pública, sin key.
 
-- **OMDB API**: demo key "trilogy" (no requiere registro)
-- **TVMaze API**: pública, sin key
-
-## Cómo Ejecutar
+## Cómo ejecutar
 
 ```bash
+pip install -r requirements.txt
 python main.py
 ```
-
-## Cómo Refactorizar
-
-1. Eliminar variables globales
-2. Separar responsabilidades en módulos claros
-3. Agregar type hints
-4. Implementar manejo de errores
-5. Crear tests unitarios
-6. Eliminar código duplicado
-7. Usar f-strings en lugar de concatenación
-8. Implementar inyección de dependencias
-9. Seguir principios SOLID
-10. Reducir archivos de configuración
