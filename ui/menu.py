@@ -1,8 +1,12 @@
 """Orquestación del menú: input -> servicio -> display."""
 
+import logging
 import time
 
 from config import CONFIG
+from exceptions.api_error import ApiError
+from exceptions.movie_not_found import MovieNotFoundError
+from exceptions.storage_error import StorageError
 from models.series import nombre_show
 from services.movie_service import (
     HISTORIAL_BUSQUEDAS,
@@ -40,7 +44,11 @@ def funcion_buscar_pelicula() -> None:
     print("Buscando...")
     delay(1)  # Simular carga innecesaria
 
-    pelicula = buscar_pelicula(titulo)
+    try:
+        pelicula = buscar_pelicula(titulo)
+    except (MovieNotFoundError, ApiError) as e:
+        print(f"Error: {e}")
+        pelicula = None
     mostrar_pelicula(pelicula)
 
     if pelicula is not None:
@@ -69,7 +77,11 @@ def funcion_buscar_actor() -> None:
         if opcion.isdigit():
             indice = int(opcion) - 1
             if indice >= 0 and indice < len(peliculas):
-                detalles = buscar_pelicula(peliculas[indice]["Title"])
+                try:
+                    detalles = buscar_pelicula(peliculas[indice]["Title"])
+                except (MovieNotFoundError, ApiError) as e:
+                    print(f"Error: {e}")
+                    detalles = None
                 mostrar_pelicula(detalles)
     else:
         print("No se encontraron películas para ese actor")
@@ -82,7 +94,11 @@ def funcion_buscar_series() -> None:
     nombre = input("Ingrese el nombre de la serie: ")
     print("Buscando series...")
 
-    series = buscar_series(nombre)
+    try:
+        series = buscar_series(nombre)
+    except ApiError as e:
+        print(f"Error: {e}")
+        series = []
 
     if len(series) > 0:
         i = 0
@@ -96,8 +112,13 @@ def funcion_buscar_series() -> None:
             indice = int(opcion) - 1
             if indice >= 0 and indice < len(series):
                 id_serie = series[indice].get("show", {}).get("id")
-                detalles = obtener_detalles_serie(id_serie)
-                mostrar_serie(detalles)
+                try:
+                    detalles = obtener_detalles_serie(id_serie)
+                except ApiError as e:
+                    print(f"Error: {e}")
+                    detalles = None
+                if detalles is not None:
+                    mostrar_serie(detalles)
     else:
         print("No se encontraron series")
 
@@ -177,7 +198,10 @@ def funcion_estadisticas() -> None:
 def funcion_exportar() -> None:
     """Exporta datos"""
     nombre = input("Nombre del archivo (sin extensión): ")
-    exportar_a_json(f"{nombre}.json")
+    try:
+        exportar_a_json(f"{nombre}.json")
+    except StorageError as e:
+        print(f"Error al exportar: {e}")
     input("\nPresione Enter para continuar...")
 
 
@@ -186,8 +210,8 @@ def funcion_importar() -> None:
     nombre = input("Nombre del archivo (sin extensión): ")
     try:
         importar_de_json(f"{nombre}.json")
-    except:
-        print("Error al importar archivo")
+    except StorageError as e:
+        print(f"Error al importar: {e}")
     input("\nPresione Enter para continuar...")
 
 
@@ -201,12 +225,16 @@ def funcion_configuracion() -> None:
     opcion = input("\nSeleccione opción a cambiar (0 para volver): ")
     if opcion == "1":
         CONFIG["debug"] = not CONFIG["debug"]
+        logging.getLogger().setLevel(logging.DEBUG if CONFIG["debug"] else logging.INFO)
         print(f"Debug ahora es: {CONFIG['debug']}")
     elif opcion == "2":
         CONFIG["verbose"] = not CONFIG["verbose"]
         print(f"Verbose ahora es: {CONFIG['verbose']}")
     elif opcion == "3":
-        CONFIG["timeout"] = int(input("Nuevo timeout: "))
+        try:
+            CONFIG["timeout"] = int(input("Nuevo timeout: "))
+        except ValueError:
+            print("Debe ser un número entero")
 
     input("\nPresione Enter para continuar...")
 

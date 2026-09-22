@@ -1,21 +1,22 @@
 """Lógica de la API OMDB (películas) + caché de películas."""
 
-from typing import Optional
+import logging
 
 from api.client import hacer_request
-from config import CONFIG
+from exceptions.movie_not_found import MovieNotFoundError
 from constants import API_KEY_OMDB, BASE_URL_OMDB
+
+logger = logging.getLogger(__name__)
 
 CACHE_PELICULAS = {}
 
 
-def buscar_pelicula(titulo: str) -> Optional[dict]:
-    """Busca película sin validación"""
+def buscar_pelicula(titulo: str) -> dict:
+    """Busca película; lanza MovieNotFoundError si OMDB no la tiene."""
     global CACHE_PELICULAS
 
     if titulo in CACHE_PELICULAS:
-        if CONFIG["debug"]:
-            print(f"DEBUG: Usando cache para {titulo}")
+        logger.debug("Usando cache para %s", titulo)
         return CACHE_PELICULAS[titulo]
 
     url = f"{BASE_URL_OMDB}?t={titulo}&apikey={API_KEY_OMDB}"
@@ -24,8 +25,7 @@ def buscar_pelicula(titulo: str) -> Optional[dict]:
     if data.get("Response") == "True":
         CACHE_PELICULAS[titulo] = data
         return data
-    else:
-        return None
+    raise MovieNotFoundError(f"No se encontró la película: {titulo}")
 
 
 def buscar_peliculas_por_actor(actor: str) -> list:

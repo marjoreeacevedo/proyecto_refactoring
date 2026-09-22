@@ -31,6 +31,14 @@ pequeños y fáciles de entender.
 - 31 funciones con type hints básicos (`str, int, bool, dict, list, None, Optional`).
 - Sin cambios de comportamiento: verificado con prueba de humo (config compartida, favoritas, export/import JSON).
 
+## Refactorizado — FASE 4 (manejo de errores, aplicado y verificado)
+
+- `exceptions/` con `ApiError`, `MovieNotFoundError`, `StorageError` (un archivo por excepción + `__init__`).
+- Cero `bare except`: `mostrar_pelicula` usa `.get(..., 'N/A')`; importar/exportar/red capturan excepciones concretas con mensaje.
+- `logging` con `logging.getLogger(__name__)` por módulo; nivel atado a `CONFIG["debug"]` (también al cambiarlo en el menú). Fuera los `print("DEBUG: ...")`; los `print()` de interfaz se quedan.
+- Contratos nuevos: `buscar_pelicula` lanza `MovieNotFoundError` (antes `None`); `hacer_request` valida status y JSON (`ApiError`); export/import lanzan `StorageError` (incluye JSON corrupto o con forma inválida).
+- Verificado con mocks, sin red: red caída, JSON inválido, película inexistente, archivo faltante/corrupto.
+
 ## Pendiente (próximas fases)
 
 - `app.py` duplicado de `main.py` + `api_movies.py`: elegir un ganador.

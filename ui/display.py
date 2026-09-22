@@ -31,51 +31,16 @@ def mostrar_pelicula(pelicula: Optional[dict]) -> None:
         print("No se encontró la película")
         return
 
-    # Acceso directo a diccionario sin get()
-    try:
-        print(f"Título: {pelicula['Title']}")
-    except:
-        print("Título: N/A")
-
-    try:
-        print(f"Año: {pelicula['Year']}")
-    except:
-        print("Año: N/A")
-
-    try:
-        print(f"Rating IMDB: {pelicula['imdbRating']}")
-    except:
-        print("Rating: N/A")
-
-    try:
-        print(f"Género: {pelicula['Genre']}")
-    except:
-        print("Género: N/A")
-
-    try:
-        print(f"Director: {pelicula['Director']}")
-    except:
-        print("Director: N/A")
-
-    try:
-        print(f"Actores: {pelicula['Actors']}")
-    except:
-        print("Actores: N/A")
-
-    try:
-        print(f"Trama: {pelicula['Plot']}")
-    except:
-        print("Trama: N/A")
-
-    try:
-        print(f"País: {pelicula['Country']}")
-    except:
-        print("País: N/A")
-
-    try:
-        print(f"Premios: {pelicula['Awards']}")
-    except:
-        print("Premios: N/A")
+    # Acceso con get() y valor por defecto
+    print(f"Título: {pelicula.get('Title', 'N/A')}")
+    print(f"Año: {pelicula.get('Year', 'N/A')}")
+    print(f"Rating IMDB: {pelicula.get('imdbRating', 'N/A')}")
+    print(f"Género: {pelicula.get('Genre', 'N/A')}")
+    print(f"Director: {pelicula.get('Director', 'N/A')}")
+    print(f"Actores: {pelicula.get('Actors', 'N/A')}")
+    print(f"Trama: {pelicula.get('Plot', 'N/A')}")
+    print(f"País: {pelicula.get('Country', 'N/A')}")
+    print(f"Premios: {pelicula.get('Awards', 'N/A')}")
 
     print_separator()
 

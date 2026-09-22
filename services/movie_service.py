@@ -3,6 +3,7 @@
 import json
 
 from api.omdb import buscar_pelicula, buscar_peliculas_por_actor
+from exceptions.storage_error import StorageError
 from models.movie import nueva_entrada_historial, titulo_de
 
 # Reservado para login futuro. Sin uso actual (verificado por búsqueda).
@@ -116,25 +117,36 @@ def obtener_estadisticas() -> dict:
 
 
 def exportar_a_json(nombre_archivo: str) -> None:
-    """Exporta datos a JSON sin manejo de errores"""
+    """Exporta datos a JSON; lanza StorageError si no se puede escribir."""
     data = {
         "favoritas": PELICULAS_FAVORITAS,
         "historial": HISTORIAL_BUSQUEDAS,
         "estadisticas": obtener_estadisticas()
     }
 
-    with open(nombre_archivo, 'w') as f:
-        json.dump(data, f)
+    try:
+        with open(nombre_archivo, 'w') as f:
+            json.dump(data, f)
+    except OSError as e:
+        raise StorageError(f"No se pudo escribir {nombre_archivo}: {e}") from e
 
     print(f"Exportado a {nombre_archivo}")
 
 
 def importar_de_json(nombre_archivo: str) -> None:
-    """Importa datos sin validación"""
+    """Importa datos; lanza StorageError si el archivo es inválido."""
     global PELICULAS_FAVORITAS, HISTORIAL_BUSQUEDAS
 
-    with open(nombre_archivo, 'r') as f:
-        data = json.load(f)
+    try:
+        with open(nombre_archivo, 'r') as f:
+            data = json.load(f)
+    except OSError as e:
+        raise StorageError(f"No se pudo leer {nombre_archivo}: {e}") from e
+    except ValueError as e:
+        raise StorageError(f"JSON inválido en {nombre_archivo}: {e}") from e
+
+    if not isinstance(data, dict):
+        raise StorageError(f"Formato inválido en {nombre_archivo}: se esperaba un objeto")
 
     PELICULAS_FAVORITAS = data.get("favoritas", [])
     HISTORIAL_BUSQUEDAS = data.get("historial", [])
