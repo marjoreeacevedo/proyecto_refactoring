@@ -9,8 +9,14 @@ pequeños y fáciles de entender.
 
 | Archivo   | Rol                                                        |
 | --------- | ---------------------------------------------------------- |
-| `main.py` | Menú en consola e interfaz con el usuario                  |
-| `api_movies.py` | Llamadas a OMDB/TVMaze, favoritas, historial, caché  |
+| `main.py` | Punto de entrada (solo lanza el menú)                      |
+| `ui/menu.py` | Orquestación: input → servicio → display                |
+| `ui/display.py` | Todo lo que pinta en pantalla                        |
+| `services/movie_service.py` | Favoritas, historial, stats, export/import   |
+| `services/series_service.py` | Capa fina sobre TVMaze                        |
+| `api/omdb.py`, `api/tvmaze.py` | Llamadas HTTP por proveedor + cachés       |
+| `api/client.py` | Cliente HTTP compartido (`hacer_request`)              |
+| `models/movie.py`, `models/series.py` | Helpers de forma de dicts            |
 | `config.py` | Ajustes compartidos (`debug`, `verbose`, `timeout`)      |
 | `constants.py` | Valores fijos (URLs, API key demo, timeout por defecto) |
 | `requirements.txt` | Dependencias (`requests`)                           |
