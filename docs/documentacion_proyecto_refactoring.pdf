@@ -1,0 +1,300 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [10 0 R 11 0 R 12 0 R 13 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /BaseFont /Helvetica /Subtype /Type1 /Encoding /WinAnsiEncoding /Type /Font >>
+endobj
+4 0 obj
+<< /BaseFont /Helvetica-Bold /Subtype /Type1 /Encoding /WinAnsiEncoding /Type /Font >>
+endobj
+5 0 obj
+<< /BaseFont /Courier /Subtype /Type1 /Encoding /WinAnsiEncoding /Type /Font >>
+endobj
+6 0 obj
+<< /Length 1299 >>
+stream
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 50.0 804.0 Tm (Analisis tecnico - Proyecto Refactoring) Tj ET 0 0 0 rg
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 485.0 804.0 Tm (2026-09-22) Tj ET 0 0 0 rg
+0.75 0.75 0.75 RG 0.5 w 50.0 796.0 m 545.0 796.0 l S 0 0 0 RG
+BT
+BT /F2 13 Tf 1 0 0 1 50.0 749.0 Tm (Contenido) Tj ET
+0.65 0.65 0.65 RG 0.8 w 50.0 745.0 m 545.0 745.0 l S 0 0 0 RG
+BT /F1 10 Tf 1 0 0 1 50.0 723.0 Tm (1. Variables globales encontradas ............................................................. 2) Tj ET
+BT /F1 10 Tf 1 0 0 1 50.0 705.0 Tm (2. Dependencias entre modulos ................................................................. 2) Tj ET
+BT /F1 10 Tf 1 0 0 1 50.0 687.0 Tm (3. Duplicacion de codigo ...................................................................... 3) Tj ET
+BT /F1 10 Tf 1 0 0 1 50.0 669.0 Tm (4. Bare except y manejo de errores ............................................................ 3) Tj ET
+BT /F1 10 Tf 1 0 0 1 50.0 651.0 Tm (5. Archivos *_config.py no usados ............................................................. 4) Tj ET
+BT /F1 10 Tf 1 0 0 1 50.0 633.0 Tm (6. Consolidado: pasos y riesgos ............................................................... 4) Tj ET
+ET
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 267.5 30 Tm (Pagina 1 de 4) Tj ET 0 0 0 rg
+endstream
+endobj
+7 0 obj
+<< /Length 6594 >>
+stream
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 50.0 804.0 Tm (Analisis tecnico - Proyecto Refactoring) Tj ET 0 0 0 rg
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 485.0 804.0 Tm (2026-09-22) Tj ET 0 0 0 rg
+0.75 0.75 0.75 RG 0.5 w 50.0 796.0 m 545.0 796.0 l S 0 0 0 RG
+BT
+BT /F2 16 Tf 1 0 0 1 50.0 756.0 Tm (Analisis Tecnico del Proyecto Refactoring) Tj ET
+BT /F1 9 Tf 0.35 0.35 0.35 rg 1 0 0 1 50.0 740.0 Tm (Variables globales - Dependencias - Duplicacion - Errores - Configuracion  |  2026-09-22) Tj ET 0 0 0 rg
+BT /F1 9 Tf 0.35 0.35 0.35 rg 1 0 0 1 50.0 726.0 Tm (Alcance: api_movies.py \(187 lineas\) + main.py \(334 lineas\). Fase: analisis, sin cambios de logica) Tj ET 0 0 0 rg
+BT /F1 9 Tf 0.35 0.35 0.35 rg 1 0 0 1 50.0 714.0 Tm (aplicados.) Tj ET 0 0 0 rg
+BT /F2 13 Tf 1 0 0 1 50.0 681.0 Tm (1. Variables globales encontradas) Tj ET
+0.65 0.65 0.65 RG 0.8 w 50.0 677.0 m 545.0 677.0 l S 0 0 0 RG
+BT /F1 9.5 Tf 1 0 0 1 50.0 659.5 Tm (Regla usada: solo cuenta lo definido a nivel de modulo con estado compartido. Todas las definiciones) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 50.0 646.0 Tm (estan en api_movies.py; main.py no define ninguna global propia.) Tj ET
+0.90 0.90 0.90 rg 50.0 613.0 495.0 32.0 re f 0 0 0 rg
+BT /F2 9 Tf 1 0 0 1 54.0 625.0 Tm (Variable) Tj ET
+BT /F2 9 Tf 1 0 0 1 186.0 625.0 Tm (Tipo / valor) Tj ET
+BT /F2 9 Tf 1 0 0 1 294.0 625.0 Tm (Uso) Tj ET
+BT /F2 9 Tf 1 0 0 1 434.0 625.0 Tm (Mantener global?) Tj ET
+BT /F2 9 Tf 1 0 0 1 54.0 613.0 Tm (\(archivo:linea\)) Tj ET
+0.5 0.5 0.5 RG 0.7 w 50.0 609.0 m 545.0 609.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 594.0 Tm (API_KEY_OMDB) Tj ET
+BT /F1 9 Tf 1 0 0 1 186.0 594.0 Tm (str = "trilogy") Tj ET
+BT /F1 9 Tf 1 0 0 1 294.0 594.0 Tm (URLs OMDB \(45, 56\)) Tj ET
+BT /F1 9 Tf 1 0 0 1 434.0 594.0 Tm (Si: configuracion) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 582.0 Tm (\(api_movies.py:5\)) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 579.0 m 545.0 579.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 564.0 Tm (BASE_URL_OMDB) Tj ET
+BT /F1 9 Tf 1 0 0 1 186.0 564.0 Tm (str URL) Tj ET
+BT /F1 9 Tf 1 0 0 1 294.0 564.0 Tm (URLs OMDB \(45, 56\)) Tj ET
+BT /F1 9 Tf 1 0 0 1 434.0 564.0 Tm (Si) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 552.0 Tm (\(api_movies.py:7\)) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 549.0 m 545.0 549.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 534.0 Tm (BASE_URL_TVMAZE) Tj ET
+BT /F1 9 Tf 1 0 0 1 186.0 534.0 Tm (str URL) Tj ET
+BT /F1 9 Tf 1 0 0 1 294.0 534.0 Tm (URLs TVMaze \(71, 79\)) Tj ET
+BT /F1 9 Tf 1 0 0 1 434.0 534.0 Tm (Si) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 522.0 Tm (\(api_movies.py:9\)) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 519.0 m 545.0 519.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 504.0 Tm (API_KEY_TMDB \(:6\)) Tj ET
+BT /F1 9 Tf 1 0 0 1 186.0 504.0 Tm (str vacia / URL) Tj ET
+BT /F1 9 Tf 1 0 0 1 294.0 504.0 Tm (Sin uso en ningun archivo) Tj ET
+BT /F1 9 Tf 1 0 0 1 434.0 504.0 Tm (No: eliminar) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 492.0 Tm (BASE_URL_TMDB \(:8\)) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 489.0 m 545.0 489.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 474.0 Tm (USUARIO_LOGUEADO) Tj ET
+BT /F1 9 Tf 1 0 0 1 186.0 474.0 Tm (None) Tj ET
+BT /F1 9 Tf 1 0 0 1 294.0 474.0 Tm (Sin lectura ni escritura) Tj ET
+BT /F1 9 Tf 1 0 0 1 434.0 474.0 Tm (No: global muerto) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 462.0 Tm (\(api_movies.py:12\)) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 459.0 m 545.0 459.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 444.0 Tm (PELICULAS_FAVORITAS) Tj ET
+BT /F1 9 Tf 1 0 0 1 186.0 444.0 Tm (list []) Tj ET
+BT /F1 9 Tf 1 0 0 1 294.0 444.0 Tm (Fav. + main.py 198-208) Tj ET
+BT /F1 9 Tf 1 0 0 1 434.0 444.0 Tm (Temporalmente si) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 432.0 Tm (\(api_movies.py:13\)) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 429.0 m 545.0 429.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 414.0 Tm (HISTORIAL_BUSQUEDAS) Tj ET
+BT /F1 9 Tf 1 0 0 1 186.0 414.0 Tm (list []) Tj ET
+BT /F1 9 Tf 1 0 0 1 294.0 414.0 Tm (Hist. + main.py 219-222) Tj ET
+BT /F1 9 Tf 1 0 0 1 434.0 414.0 Tm (Temporalmente si) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 402.0 Tm (\(api_movies.py:14\)) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 399.0 m 545.0 399.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 384.0 Tm (CACHE_PELICULAS \(:15\)) Tj ET
+BT /F1 9 Tf 1 0 0 1 186.0 384.0 Tm (dict {}) Tj ET
+BT /F1 9 Tf 1 0 0 1 294.0 384.0 Tm (Solo interno api_movies) Tj ET
+BT /F1 9 Tf 1 0 0 1 434.0 384.0 Tm (Si: cache idiomatica) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 372.0 Tm (CACHE_SERIES \(:16\)) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 369.0 m 545.0 369.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 354.0 Tm (CONFIG) Tj ET
+BT /F1 9 Tf 1 0 0 1 186.0 354.0 Tm (dict 4 claves) Tj ET
+BT /F1 9 Tf 1 0 0 1 294.0 354.0 Tm (Ambos; main.py 260-272) Tj ET
+BT /F1 9 Tf 1 0 0 1 434.0 354.0 Tm (Temporalmente si) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 342.0 Tm (\(api_movies.py:17-22\)) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 339.0 m 545.0 339.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 324.0 Tm (main.py: sin globales) Tj ET
+BT /F1 9 Tf 1 0 0 1 186.0 324.0 Tm (---) Tj ET
+BT /F1 9 Tf 1 0 0 1 294.0 324.0 Tm (Consume 3 via import *) Tj ET
+BT /F1 9 Tf 1 0 0 1 434.0 324.0 Tm (---) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 312.0 Tm (propios) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 309.0 m 545.0 309.0 l S 0 0 0 RG
+BT /F2 11 Tf 1 0 0 1 50.0 276.0 Tm (1.1 Lo que NO es global) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 262.5 Tm (- Locales de funcion \(titulo, pelicula, data, url, indice, stats...\), listas creadas dentro de) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 249.0 Tm (obtener_peliculas_populares \(84-90\) y buscar_por_genero \(94-101\), funciones e imports.) Tj ET
+BT /F2 11 Tf 1 0 0 1 50.0 219.0 Tm (1.2 Matiz sobre global innecesario) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 205.5 Tm (- Solo hace falta 'global' si se REASIGNA el nombre. Innecesario en buscar_pelicula \(38\),) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 192.0 Tm (buscar_series \(65\), agregar_a_favoritas \(112\), eliminar \(128\) y agregar_historial \(138\): solo) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 178.5 Tm (mutan. Necesario en limpiar_historial \(146\) e importar_de_json \(179\): hacen 'lista = [...]'.) Tj ET
+BT /F2 11 Tf 1 0 0 1 50.0 148.5 Tm (1.3 Recomendacion y riesgo) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 135.0 Tm (- Dejar constantes; eliminar USUARIO_LOGUEADO, API_KEY_TMDB, BASE_URL_TMDB y CONFIG[max_retries]) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 121.5 Tm (\(muertas\); imports explicitos; quitar 'global' innecesarios.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 103.0 Tm (- Riesgo: reasignar listas con 'import *' deja a main.py con la referencia vieja; renombrar) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 89.5 Tm (claves de CONFIG rompe hacer_request y funcion_configuracion.) Tj ET
+ET
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 267.5 30 Tm (Pagina 2 de 4) Tj ET 0 0 0 rg
+endstream
+endobj
+8 0 obj
+<< /Length 4258 >>
+stream
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 50.0 804.0 Tm (Analisis tecnico - Proyecto Refactoring) Tj ET 0 0 0 rg
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 485.0 804.0 Tm (2026-09-22) Tj ET 0 0 0 rg
+0.75 0.75 0.75 RG 0.5 w 50.0 796.0 m 545.0 796.0 l S 0 0 0 RG
+BT
+BT /F2 13 Tf 1 0 0 1 50.0 749.0 Tm (2. Dependencias entre modulos) Tj ET
+0.65 0.65 0.65 RG 0.8 w 50.0 745.0 m 545.0 745.0 l S 0 0 0 RG
+BT /F1 9.5 Tf 1 0 0 1 50.0 727.5 Tm (Direccion unica: main.py -> api_movies.py \(via 'from api_movies import *', main.py:7\). api_movies.py) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 50.0 714.0 Tm (no importa nada propio \(solo requests + json\). Ningun otro .py importa estos modulos. app.py es un) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 50.0 700.5 Tm (duplicado monolitico huerfano \(ver 3.5\).) Tj ET
+0.94 0.94 0.94 rg 50.0 671.5 495.0 24.0 re f 0 0 0 rg
+0.8 0.8 0.8 RG 0.6 w 50.0 671.5 m 50.0 695.5 l S 0 0 0 RG
+BT /F3 8.5 Tf 1 0 0 1 58.0 676.5 Tm (main.py --import *--> api_movies.py --requests/json--> OMDB + TVMaze + .json) Tj ET
+BT /F2 11 Tf 1 0 0 1 50.0 644.5 Tm (2.1 Uso funcion por funcion \(main -> api_movies\)) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 631.0 Tm (- funcion_buscar_pelicula: buscar_pelicula + agregar_al_historial + agregar_a_favoritas.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 612.5 Tm (- funcion_buscar_actor: buscar_peliculas_por_actor + buscar_pelicula. funcion_buscar_series:) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 599.0 Tm (buscar_series + obtener_detalles_serie.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 580.5 Tm (- Resto: obtener_peliculas_populares, buscar_por_genero, eliminar_de_favoritas,) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 567.0 Tm (limpiar_historial, obtener_estadisticas, exportar/importar_json.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 548.5 Tm (- Lectura directa de globales: PELICULAS_FAVORITAS \(198-208\), HISTORIAL_BUSQUEDAS \(219-222\),) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 535.0 Tm (CONFIG \(260-272\). Interno: hacer_request\(\) sirve a 4 busquedas.) Tj ET
+BT /F2 11 Tf 1 0 0 1 50.0 505.0 Tm (2.2 Riesgo principal) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 491.5 Tm (- Quitar 'import *' sin explicitos rompe todo \(NameError\); renombrar una funcion en api_movies) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 478.0 Tm (rompe main en cadena; cambiar hacer_request afecta a 4 funciones.) Tj ET
+BT /F2 13 Tf 1 0 0 1 50.0 442.0 Tm (3. Duplicacion de codigo) Tj ET
+0.65 0.65 0.65 RG 0.8 w 50.0 438.0 m 545.0 438.0 l S 0 0 0 RG
+BT /F2 11 Tf 1 0 0 1 50.0 409.0 Tm (3.1 Logica de negocio \(api_movies.py\)) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 395.5 Tm (- D1 \(36-52 vs 63-75\): cache identica en buscar_pelicula/buscar_series. D2 \(115-132, 152-157\):) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 382.0 Tm (recorridos manuales + conteo 'total = total + 1' en vez de len\(\). D3 \(84-101\): listas {titulo,) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 368.5 Tm (anio, rating} en populares y por_genero.) Tj ET
+BT /F2 11 Tf 1 0 0 1 50.0 338.5 Tm (3.2 Interfaz \(main.py\)) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 325.0 Tm (- D4 \(35-78\): 9 bloques try/except por campo. D5 \(101, 159, 199, 220\): 4 bucles 'while i' en vez) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 311.5 Tm (de for/enumerate. D6 \(11 sitios\): literal input\('Presione Enter...'\) -> candidata a pausa\(\). D7) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 298.0 Tm (\(110-193\): esqueleto input->buscar->mostrar->pausa en 5 funciones.) Tj ET
+BT /F2 11 Tf 1 0 0 1 50.0 268.0 Tm (3.3 Nivel archivo) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 254.5 Tm (- D8: main.py \(334 lin\) vs app.py \(255 lin\): dos implementaciones paralelas con otros nombres) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 241.0 Tm (\(buscar_pelicula_omdb, print_sep...\). Decidir un ganador; no mantener ambos.) Tj ET
+BT /F2 11 Tf 1 0 0 1 50.0 211.0 Tm (3.4 Propuestas \(sin aplicar\)) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 197.5 Tm (- len\(\)/any\(\), helper mostrar_campo o .get\(\), for+enumerate, pausa\(\) de 1 linea. D1/D7 pueden) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 184.0 Tm (quedar duplicados \(8 lineas\): legibilidad antes que abstraccion.) Tj ET
+BT /F2 13 Tf 1 0 0 1 50.0 148.0 Tm (4. Bare except y manejo de errores) Tj ET
+0.65 0.65 0.65 RG 0.8 w 50.0 144.0 m 545.0 144.0 l S 0 0 0 RG
+BT /F2 11 Tf 1 0 0 1 50.0 115.0 Tm (4.1 Bare except localizados) Tj ET
+ET
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 267.5 30 Tm (Pagina 3 de 4) Tj ET 0 0 0 rg
+endstream
+endobj
+9 0 obj
+<< /Length 5943 >>
+stream
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 50.0 804.0 Tm (Analisis tecnico - Proyecto Refactoring) Tj ET 0 0 0 rg
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 485.0 804.0 Tm (2026-09-22) Tj ET 0 0 0 rg
+0.75 0.75 0.75 RG 0.5 w 50.0 796.0 m 545.0 796.0 l S 0 0 0 RG
+BT
+0.90 0.90 0.90 rg 50.0 764.0 495.0 20.0 re f 0 0 0 rg
+BT /F2 9 Tf 1 0 0 1 54.0 764.0 Tm (Sitio) Tj ET
+BT /F2 9 Tf 1 0 0 1 164.0 764.0 Tm (Codigo) Tj ET
+BT /F2 9 Tf 1 0 0 1 364.0 764.0 Tm (Problema) Tj ET
+0.5 0.5 0.5 RG 0.7 w 50.0 760.0 m 545.0 760.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 745.0 Tm (E1-E9) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 745.0 Tm (try/except: desnudo x9 campos \(Title,) Tj ET
+BT /F1 9 Tf 1 0 0 1 364.0 745.0 Tm (Tapa TypeError y KeyboardInterrupt) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 733.0 Tm (main.py 35-77) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 733.0 Tm (Year, ...\)) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 730.0 m 545.0 730.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 715.0 Tm (E10) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 715.0 Tm (except: generico al importar) Tj ET
+BT /F1 9 Tf 1 0 0 1 364.0 715.0 Tm (Sin diagnostico del fallo real) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 703.0 Tm (main.py 251-253) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 700.0 m 545.0 700.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 685.0 Tm (E11 \(OK\)) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 685.0 Tm (except KeyboardInterrupt + Exception as) Tj ET
+BT /F1 9 Tf 1 0 0 1 364.0 685.0 Tm (Correcto: dejar como referencia) Tj ET
+BT /F1 9 Tf 1 0 0 1 54.0 673.0 Tm (main.py 327-333) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 673.0 Tm (e) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 670.0 m 545.0 670.0 l S 0 0 0 RG
+BT /F2 11 Tf 1 0 0 1 50.0 637.0 Tm (4.2 Errores por ausencia de control) Tj ET
+0.90 0.90 0.90 rg 50.0 621.0 495.0 20.0 re f 0 0 0 rg
+BT /F2 9 Tf 1 0 0 1 54.0 621.0 Tm (Sitio) Tj ET
+BT /F2 9 Tf 1 0 0 1 164.0 621.0 Tm (Que falta) Tj ET
+BT /F2 9 Tf 1 0 0 1 359.0 621.0 Tm (Riesgo) Tj ET
+0.5 0.5 0.5 RG 0.7 w 50.0 617.0 m 545.0 617.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 602.0 Tm (A1 - api 24-34) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 602.0 Tm (requests.get + .json\(\) sin try ni) Tj ET
+BT /F1 9 Tf 1 0 0 1 359.0 602.0 Tm (Caida sin red o API caida) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 590.0 Tm (status) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 587.0 m 545.0 587.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 572.0 Tm (A2 - api 45-79) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 572.0 Tm (URL por concatenacion sin validar) Tj ET
+BT /F1 9 Tf 1 0 0 1 359.0 572.0 Tm (Titulos con espacios o & rompen query) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 569.0 m 545.0 569.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 554.0 Tm (A3/A4 - api 164-187) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 554.0 Tm (open/json sin try; importar sin validar) Tj ET
+BT /F1 9 Tf 1 0 0 1 359.0 554.0 Tm (OSError o JSON corrupto) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 551.0 m 545.0 551.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 536.0 Tm (A5 - main 272) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 536.0 Tm (int\(input timeout\) sin try) Tj ET
+BT /F1 9 Tf 1 0 0 1 359.0 536.0 Tm (ValueError cierra el programa) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 533.0 m 545.0 533.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 518.0 Tm (A6 - main 95) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 518.0 Tm (summary None + [:200] sin guarda) Tj ET
+BT /F1 9 Tf 1 0 0 1 359.0 518.0 Tm (TypeError si API devuelve null) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 515.0 m 545.0 515.0 l S 0 0 0 RG
+BT /F1 9 Tf 1 0 0 1 54.0 500.0 Tm (A7 - main 103-222) Tj ET
+BT /F1 9 Tf 1 0 0 1 164.0 500.0 Tm (accesos ["clave"] sin .get\(\)) Tj ET
+BT /F1 9 Tf 1 0 0 1 359.0 500.0 Tm (KeyError tras importar datos) Tj ET
+0.85 0.85 0.85 RG 0.4 w 50.0 497.0 m 545.0 497.0 l S 0 0 0 RG
+BT /F2 11 Tf 1 0 0 1 50.0 464.0 Tm (4.3 Propuestas \(sin aplicar\)) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 450.5 Tm (- E1-E9: pelicula.get\('Title', 'N/A'\). E10: except \(FileNotFoundError, JSONDecodeError, OSError\)) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 437.0 Tm (as e. A1: try/except RequestException -> return None + comprobar None en llamantes. A5: try) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 423.5 Tm (int/except ValueError.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 405.0 Tm (- Riesgo: concretar excepciones revelara fallos hoy ocultos \(deseado\); hacer_request devolviendo) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 391.5 Tm (None exige actualizar 4 llamantes. No tocar E11.) Tj ET
+BT /F2 13 Tf 1 0 0 1 50.0 355.5 Tm (5. Archivos *_config.py no usados) Tj ET
+0.65 0.65 0.65 RG 0.8 w 50.0 351.5 m 545.0 351.5 l S 0 0 0 RG
+BT /F1 9.5 Tf 1 0 0 1 66.0 334.0 Tm (- 88 archivos \(de 118 .py\): nucleo ~23 + familia cache/API ~65. Verificacion: 0 imports desde) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 320.5 Tm (no-config \(main/api_movies/app/utils/managers\). Funciones load_*/get_* nunca llamadas.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 302.0 Tm (- Patron repetido 88 veces: *_CONFIG_FILE str + *_config dict + load/save/get/set; time/datetime) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 288.5 Tm (importados sin uso; ~176 globales muertos. Solapan con CONFIG real sin conectarse.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 270.0 Tm (- Propuesta: archivar en legacy_config/ \(reversible\), conservar maximo cache_config.py y) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 256.5 Tm (api_config.py como referencia. Riesgo de borrar hoy: casi nulo; riesgo de mantener: ruido y) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 243.0 Tm (.json huerfanos.) Tj ET
+BT /F2 13 Tf 1 0 0 1 50.0 207.0 Tm (6. Consolidado: pasos y riesgos) Tj ET
+0.65 0.65 0.65 RG 0.8 w 50.0 203.0 m 545.0 203.0 l S 0 0 0 RG
+BT /F1 9.5 Tf 1 0 0 1 66.0 185.5 Tm (- Paso 1 \(seguro\): borrar muertas, quitar 'global' innecesarios, imports explicitos. Paso 2:) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 172.0 Tm (.get\(\) y excepciones concretas. Paso 3: len/for/pausa, app.py y *_config.py a legacy.) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 66.0 153.5 Tm (- Nada aplicado aun: este documento es analisis. Codigo intacto hasta revision y orden) Tj ET
+BT /F1 9.5 Tf 1 0 0 1 76.0 140.0 Tm (explicita.) Tj ET
+ET
+BT /F1 8 Tf 0.45 0.45 0.45 rg 1 0 0 1 267.5 30 Tm (Pagina 4 de 4) Tj ET 0 0 0 rg
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 7 0 R >>
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 9 0 R >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000137 00000 n 
+0000000234 00000 n 
+0000000336 00000 n 
+0000000431 00000 n 
+0000001782 00000 n 
+0000008428 00000 n 
+0000012738 00000 n 
+0000018733 00000 n 
+0000018880 00000 n 
+0000019027 00000 n 
+0000019174 00000 n 
+trailer
+<< /Size 14 /Root 1 0 R >>
+startxref
+19321
+%%EOF

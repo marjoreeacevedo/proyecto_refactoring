@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.json
+.env
+.DS_Store
+.venv/
+legacy_config/
+.opencode/
