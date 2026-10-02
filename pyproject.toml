@@ -1,0 +1,29 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.coverage.run]
+# Alcance: código de aplicación. Se excluye legado muerto (justificado en
+# docs/MEJORAS_REALIZADAS.md y skills/testing/SKILL.md): app.py monolito,
+# *_manager.py, utils.py, logger.py, legacy_config/, docs/, tests/, entornos.
+source = ["."]
+omit = [
+    "app.py",
+    "*_manager.py",
+    "cache_manager_v2.py",
+    "config_manager_v2.py",
+    "utils.py",
+    "logger.py",
+    "legacy_config/*",
+    "docs/*",
+    "tests/*",
+    "opencode/*",
+    ".opencode/*",
+    "skills/*",
+    ".venv/*",
+    "__pycache__/*",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false

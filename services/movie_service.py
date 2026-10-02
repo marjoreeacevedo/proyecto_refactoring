@@ -61,28 +61,18 @@ def buscar_peliculas_por_genero(genero: str) -> list:
 
 
 def agregar_a_favoritas(pelicula: dict) -> bool:
-    """Agrega a favoritas sin duplicados (pero con código duplicado)"""
-    global PELICULAS_FAVORITAS
-
-    # Verificar si ya existe (código duplicado)
-    existe = False
-    for p in PELICULAS_FAVORITAS:
-        if titulo_de(p) == titulo_de(pelicula):
-            existe = True
-            break
-
-    if not existe:
-        PELICULAS_FAVORITAS.append(pelicula)
-        return True
-    return False
+    """Agrega a favoritas sin duplicados (por título en ambos formatos)."""
+    titulo = titulo_de(pelicula)
+    if any(titulo_de(p) == titulo for p in PELICULAS_FAVORITAS):
+        return False
+    PELICULAS_FAVORITAS.append(pelicula)
+    return True
 
 
 def eliminar_de_favoritas(titulo: str) -> bool:
-    """Elimina de favoritas sin verificar existencia"""
-    global PELICULAS_FAVORITAS
-
-    for i in range(len(PELICULAS_FAVORITAS)):
-        if titulo_de(PELICULAS_FAVORITAS[i]) == titulo:
+    """Elimina de favoritas por título; False si no existe."""
+    for i, fav in enumerate(PELICULAS_FAVORITAS):
+        if titulo_de(fav) == titulo:
             PELICULAS_FAVORITAS.pop(i)
             return True
     return False
@@ -90,29 +80,19 @@ def eliminar_de_favoritas(titulo: str) -> bool:
 
 def agregar_al_historial(pelicula: dict) -> None:
     """Agrega al historial sin límite"""
-    global HISTORIAL_BUSQUEDAS
     HISTORIAL_BUSQUEDAS.append(nueva_entrada_historial(pelicula))
 
 
 def limpiar_historial() -> None:
-    """Limpia historial"""
-    global HISTORIAL_BUSQUEDAS
-    HISTORIAL_BUSQUEDAS = []
+    """Limpia historial conservando la identidad de la lista."""
+    HISTORIAL_BUSQUEDAS.clear()
 
 
 def obtener_estadisticas() -> dict:
-    """Obtiene estadísticas (código duplicado)"""
-    total_favoritas = 0
-    for p in PELICULAS_FAVORITAS:
-        total_favoritas = total_favoritas + 1
-
-    total_historial = 0
-    for h in HISTORIAL_BUSQUEDAS:
-        total_historial = total_historial + 1
-
+    """Obtiene estadísticas de favoritas e historial."""
     return {
-        "total_favoritas": total_favoritas,
-        "total_historial": total_historial
+        "total_favoritas": len(PELICULAS_FAVORITAS),
+        "total_historial": len(HISTORIAL_BUSQUEDAS)
     }
 
 
@@ -135,8 +115,6 @@ def exportar_a_json(nombre_archivo: str) -> None:
 
 def importar_de_json(nombre_archivo: str) -> None:
     """Importa datos; lanza StorageError si el archivo es inválido."""
-    global PELICULAS_FAVORITAS, HISTORIAL_BUSQUEDAS
-
     try:
         with open(nombre_archivo, 'r') as f:
             data = json.load(f)
@@ -148,7 +126,11 @@ def importar_de_json(nombre_archivo: str) -> None:
     if not isinstance(data, dict):
         raise StorageError(f"Formato inválido en {nombre_archivo}: se esperaba un objeto")
 
-    PELICULAS_FAVORITAS = data.get("favoritas", [])
-    HISTORIAL_BUSQUEDAS = data.get("historial", [])
+    # clear()+extend() en lugar de reasignar: conserva la identidad de las
+    # listas importadas por ui/menu.py y tests/conftest.py (sin `global`).
+    PELICULAS_FAVORITAS.clear()
+    PELICULAS_FAVORITAS.extend(data.get("favoritas", []))
+    HISTORIAL_BUSQUEDAS.clear()
+    HISTORIAL_BUSQUEDAS.extend(data.get("historial", []))
 
     print(f"Importado desde {nombre_archivo}")

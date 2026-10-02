@@ -63,13 +63,11 @@ def mostrar_serie(serie: dict) -> None:
 
 
 def mostrar_lista_peliculas(peliculas: list) -> None:
-    """Muestra lista de películas"""
-    i = 0
-    while i < len(peliculas):
-        if es_formato_local(peliculas[i]):
-            print(f"{i + 1}. {peliculas[i]['titulo']} ({peliculas[i]['anio']}) - {peliculas[i]['rating']}")
-        elif es_formato_omdb(peliculas[i]):
-            print(f"{i + 1}. {peliculas[i]['Title']} ({peliculas[i].get('Year', 'N/A')})")
+    """Muestra lista de películas (OMDB, local o desconocida)."""
+    for i, pelicula in enumerate(peliculas):
+        if es_formato_local(pelicula):
+            print(f"{i + 1}. {pelicula['titulo']} ({pelicula['anio']}) - {pelicula['rating']}")
+        elif es_formato_omdb(pelicula):
+            print(f"{i + 1}. {pelicula['Title']} ({pelicula.get('Year', 'N/A')})")
         else:
             print(f"{i + 1}. Película desconocida")
-        i += 1

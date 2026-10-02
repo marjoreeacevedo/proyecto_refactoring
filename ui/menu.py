@@ -8,6 +8,7 @@ from exceptions.api_error import ApiError
 from exceptions.movie_not_found import MovieNotFoundError
 from exceptions.storage_error import StorageError
 from models.series import nombre_show
+from validators import nombre_archivo_seguro, texto_busqueda, timeout_valido
 from services.movie_service import (
     HISTORIAL_BUSQUEDAS,
     PELICULAS_FAVORITAS,
@@ -40,7 +41,12 @@ def delay(seconds: int) -> None:
 
 def funcion_buscar_pelicula() -> None:
     """Busca película"""
-    titulo = input("Ingrese el título de la película: ")
+    try:
+        titulo = texto_busqueda(input("Ingrese el título de la película: "), "El título")
+    except ValueError as e:
+        print(f"Error: {e}")
+        input("\nPresione Enter para continuar...")
+        return
     print("Buscando...")
     delay(1)  # Simular carga innecesaria
 
@@ -65,7 +71,12 @@ def funcion_buscar_pelicula() -> None:
 
 def funcion_buscar_actor() -> None:
     """Busca actor"""
-    actor = input("Ingrese el nombre del actor: ")
+    try:
+        actor = texto_busqueda(input("Ingrese el nombre del actor: "), "El actor")
+    except ValueError as e:
+        print(f"Error: {e}")
+        input("\nPresione Enter para continuar...")
+        return
     print("Buscando películas del actor...")
 
     peliculas = buscar_peliculas_por_actor(actor)
@@ -91,7 +102,12 @@ def funcion_buscar_actor() -> None:
 
 def funcion_buscar_series() -> None:
     """Busca series"""
-    nombre = input("Ingrese el nombre de la serie: ")
+    try:
+        nombre = texto_busqueda(input("Ingrese el nombre de la serie: "), "El nombre")
+    except ValueError as e:
+        print(f"Error: {e}")
+        input("\nPresione Enter para continuar...")
+        return
     print("Buscando series...")
 
     try:
@@ -101,11 +117,9 @@ def funcion_buscar_series() -> None:
         series = []
 
     if len(series) > 0:
-        i = 0
-        while i < len(series):
-            show = series[i].get("show", {})
+        for i, item in enumerate(series):
+            show = item.get("show", {})
             print(f"{i + 1}. {nombre_show(show)} ({show.get('status', '')})")
-            i += 1
 
         opcion = input("\nSeleccione una serie para ver detalles (0 para volver): ")
         if opcion.isdigit():
@@ -136,7 +150,16 @@ def funcion_peliculas_populares() -> None:
 def funcion_buscar_por_genero() -> None:
     """Busca por género"""
     print("Géneros disponibles: acción, comedia")
-    genero = input("Ingrese el género: ")
+    try:
+        genero = texto_busqueda(input("Ingrese el género: "), "El género")
+    except ValueError as e:
+        print(f"Error: {e}")
+        input("\nPresione Enter para continuar...")
+        return
+    if genero.lower() not in ("accion", "comedia"):
+        print("Error: género no válido. Use 'accion' o 'comedia'.")
+        input("\nPresione Enter para continuar...")
+        return
     print("Buscando...")
 
     peliculas = buscar_peliculas_por_genero(genero)
@@ -149,10 +172,8 @@ def funcion_ver_favoritos() -> None:
     """Muestra favoritas"""
     print_header("MIS FAVORITOS")
     if len(PELICULAS_FAVORITAS) > 0:
-        i = 0
-        while i < len(PELICULAS_FAVORITAS):
-            print(f"{i + 1}. {PELICULAS_FAVORITAS[i].get('Title', '')}")
-            i += 1
+        for i, fav in enumerate(PELICULAS_FAVORITAS):
+            print(f"{i + 1}. {fav.get('Title', '')}")
 
         opcion = input("\n¿Desea eliminar alguna? (número o Enter para volver): ")
         if opcion.isdigit():
@@ -171,10 +192,8 @@ def funcion_ver_historial() -> None:
     """Muestra historial"""
     print_header("HISTORIAL DE BÚSQUEDAS")
     if len(HISTORIAL_BUSQUEDAS) > 0:
-        i = 0
-        while i < len(HISTORIAL_BUSQUEDAS):
-            print(f"{i + 1}. {HISTORIAL_BUSQUEDAS[i]['titulo']}")
-            i += 1
+        for i, entrada in enumerate(HISTORIAL_BUSQUEDAS):
+            print(f"{i + 1}. {entrada['titulo']}")
 
         opcion = input("\n¿Limpiar historial? (s/n): ")
         if opcion.lower() == "s":
@@ -199,8 +218,9 @@ def funcion_exportar() -> None:
     """Exporta datos"""
     nombre = input("Nombre del archivo (sin extensión): ")
     try:
+        nombre = nombre_archivo_seguro(nombre)
         exportar_a_json(f"{nombre}.json")
-    except StorageError as e:
+    except (ValueError, StorageError) as e:
         print(f"Error al exportar: {e}")
     input("\nPresione Enter para continuar...")
 
@@ -209,8 +229,9 @@ def funcion_importar() -> None:
     """Importa datos"""
     nombre = input("Nombre del archivo (sin extensión): ")
     try:
+        nombre = nombre_archivo_seguro(nombre)
         importar_de_json(f"{nombre}.json")
-    except StorageError as e:
+    except (ValueError, StorageError) as e:
         print(f"Error al importar: {e}")
     input("\nPresione Enter para continuar...")
 
@@ -232,9 +253,9 @@ def funcion_configuracion() -> None:
         print(f"Verbose ahora es: {CONFIG['verbose']}")
     elif opcion == "3":
         try:
-            CONFIG["timeout"] = int(input("Nuevo timeout: "))
-        except ValueError:
-            print("Debe ser un número entero")
+            CONFIG["timeout"] = timeout_valido(input("Nuevo timeout: "))
+        except ValueError as e:
+            print(f"Error: {e}")
 
     input("\nPresione Enter para continuar...")
 

@@ -1,20 +1,24 @@
 """Lógica de la API TVMaze (series) + caché de series."""
 
+import logging
+from urllib.parse import quote_plus
+
 from api.client import hacer_request
 from constants import BASE_URL_TVMAZE, CACHE_PREFIX_SERIES
 
-CACHE_SERIES = {}
+logger = logging.getLogger(__name__)
+
+CACHE_SERIES: dict = {}
 
 
 def buscar_series(nombre: str) -> list:
     """Busca series en TVMaze"""
-    global CACHE_SERIES
-
     cache_key = f"{CACHE_PREFIX_SERIES}{nombre}"
     if cache_key in CACHE_SERIES:
+        logger.debug("Usando cache de series para %s", nombre)
         return CACHE_SERIES[cache_key]
 
-    url = f"{BASE_URL_TVMAZE}/search/shows?q={nombre}"
+    url = f"{BASE_URL_TVMAZE}/search/shows?q={quote_plus(nombre)}"
     data = hacer_request(url)
 
     CACHE_SERIES[cache_key] = data

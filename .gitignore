@@ -4,5 +4,13 @@ __pycache__/
 .env
 .DS_Store
 .venv/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
 legacy_config/
-.opencode/
+.opencode/node_modules/
+.opencode/package-lock.json
+.opencode/server.lock.json
+# Los skills de OpenCode sí se versionan:
+# .opencode/skills/*/SKILL.md y skills/*/SKILL.md quedan incluidos.

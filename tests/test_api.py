@@ -58,3 +58,28 @@ def test_buscar_series_cachea_con_prefijo():
     with patch("api.client.requests.get", return_value=_respuesta(payload)):
         assert tvmaze.buscar_series("algo") == payload
         assert "series_algo" in tvmaze.CACHE_SERIES
+
+
+def test_buscar_por_actor_ok():
+    payload = {"Response": "True", "Search": [{"Title": "T", "Year": "2000"}]}
+    with patch("api.client.requests.get", return_value=_respuesta(payload)):
+        assert omdb.buscar_peliculas_por_actor("Alguien") == payload["Search"]
+
+
+def test_buscar_por_actor_sin_resultados():
+    with patch("api.client.requests.get", return_value=_respuesta({"Response": "False"})):
+        assert omdb.buscar_peliculas_por_actor("Nadie XYZ") == []
+
+
+def test_obtener_detalles_serie():
+    payload = {"id": 1, "name": "S"}
+    with patch("api.client.requests.get", return_value=_respuesta(payload)):
+        assert tvmaze.obtener_detalles_serie(1) == payload
+
+
+def test_request_error_http():
+    r = _respuesta({"error": "x"})
+    r.raise_for_status.side_effect = rq.HTTPError("500")
+    with patch("api.client.requests.get", return_value=r):
+        with pytest.raises(ApiError):
+            hacer_request("http://x")
