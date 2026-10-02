@@ -7,8 +7,9 @@ description: Use when creating automated tests with pytest, fixtures, mocks, par
 
 Purpose: automated tests with pytest, targeting ≥80% coverage of in-scope app code.
 
-Derived from root `SKILL.md` (obsolete `skill.json` format). OpenCode-compatible copy:
-`skills/testing/SKILL.md` (active: `.opencode/skills/testing/SKILL.md`).
+Derived from root `SKILL.md` (obsolete `skill.json` format). This file is the
+versioned deliverable (`opencode/skills/testing/SKILL.md`), synced with
+the active skill at `.opencode/skills/testing/SKILL.md`.
 
 ## When to act
 

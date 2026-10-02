@@ -9,7 +9,8 @@ Purpose: identify and remove bad practices without changing expected application
 
 Derived from root `SKILL.md` (which proposes `skill.json` + `instrucciones.md`, an obsolete format).
 This file uses the format recognized by OpenCode 1.18.30: `.opencode/skills/<name>/SKILL.md`
-with `name`/`description` frontmatter. Deliverable copy: `skills/refactoring/SKILL.md`.
+with `name`/`description` frontmatter. This file is the versioned deliverable
+(`opencode/skills/refactoring/SKILL.md`), synced with `.opencode/skills/refactoring/SKILL.md`.
 
 ## When to act
 

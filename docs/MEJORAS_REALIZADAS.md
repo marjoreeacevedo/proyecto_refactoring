@@ -25,8 +25,8 @@ Fecha: 2026-10-02. Suite verificada con ejecución real: **74 passed**, cobertur
 
 ## 2. Cambios realizados
 
-- **Skills:** creados `skills/{refactoring,api-integration,testing}/SKILL.md` y
-  sincronizados a `.opencode/skills/*/SKILL.md` (formato OpenCode con frontmatter).
+- **Skills:** creados `opencode/skills/{refactoring,api-integration,testing}/SKILL.md`
+  y sincronizados a `.opencode/skills/*/SKILL.md` (formato OpenCode con frontmatter).
 - **Refactor grupo A (`api/`):** eliminados `global CACHE_*`; añadidos hints
   `CACHE_*: dict`, `-> dict/list`; `tvmaze.py` con `logger` + debug de caché.
 - **Refactor grupo B (`services/movie_service.py`):** `any()` en favoritas,
@@ -44,7 +44,7 @@ Fecha: 2026-10-02. Suite verificada con ejecución real: **74 passed**, cobertur
   `ui/display.py`, `ui/menu.py`
 - `requirements-dev.txt` (+`pytest-cov`), `pyproject.toml` (nuevo),
   `.gitignore`, `README.md`
-- Nuevos: `skills/*/SKILL.md` (3), `tests/test_menu_flows.py`, `tests/test_misc.py`,
+- Nuevos: `opencode/skills/*/SKILL.md` (3), `tests/test_menu_flows.py`, `tests/test_misc.py`,
   `docs/MEJORAS_REALIZADAS.md`
 - Sincronizados: `.opencode/skills/*/SKILL.md` (3)
 
@@ -79,9 +79,9 @@ idempotentes GET con backoff y `Retry-After` — requiere decisión de producto.
 
 | Skill | Path activo | Path entregable | Finalidad |
 |---|---|---|---|
-| Refactoring | `.opencode/skills/refactoring/SKILL.md` | `skills/refactoring/SKILL.md` | Limpieza sin cambiar comportamiento |
-| API Integration | `.opencode/skills/api-integration/SKILL.md` | `skills/api-integration/SKILL.md` | REST robusto con timeouts/errores/caché/mocks |
-| Testing | `.opencode/skills/testing/SKILL.md` | `skills/testing/SKILL.md` | pytest + fixtures/mocks/cobertura ≥80 % |
+| Refactoring | `.opencode/skills/refactoring/SKILL.md` | `opencode/skills/refactoring/SKILL.md` | Limpieza sin cambiar comportamiento |
+| API Integration | `.opencode/skills/api-integration/SKILL.md` | `opencode/skills/api-integration/SKILL.md` | REST robusto con timeouts/errores/caché/mocks |
+| Testing | `.opencode/skills/testing/SKILL.md` | `opencode/skills/testing/SKILL.md` | pytest + fixtures/mocks/cobertura ≥80 % |
 
 Todos con frontmatter válido (`name` == directorio, `description` 1–1024 chars),
 verificado contra https://opencode.ai/docs/skills y `opencode 1.18.30`.
@@ -118,7 +118,7 @@ config/constants/exceptions 100 %, ui/display 100 %, main 94 % (línea 33:
 Alcance en `pyproject.toml`. Excluidos con justificación: `app.py` (monolito
 legacy duplicado), `*_manager.py` + `cache/config_*_v2.py` (0 imports, muertos),
 `utils.py`, `logger.py` (0 imports), `legacy_config/` (88 configs archivados),
-`docs/`, `tests/`, `opencode/`, `.opencode/`, `skills/`, venv/cachés. Sin esta
+`docs/`, `tests/`, `opencode/`, `.opencode/`, venv/cachés. Sin esta
 exclusión justificada el total era 13 % por ~3357 líneas muertas no probadas.
 
 ## 11. Limitaciones / pendientes

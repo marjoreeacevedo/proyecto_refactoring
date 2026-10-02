@@ -7,8 +7,9 @@ description: Use when integrating REST APIs in Python with requests, OMDB, TVMaz
 
 Purpose: consume and integrate REST APIs consistently and robustly.
 
-Derived from root `SKILL.md` (obsolete `skill.json` format). OpenCode-compatible copy:
-`skills/api-integration/SKILL.md` (active: `.opencode/skills/api-integration/SKILL.md`).
+Derived from root `SKILL.md` (obsolete `skill.json` format). This file is the
+versioned deliverable (`opencode/skills/api-integration/SKILL.md`), synced with
+the active skill at `.opencode/skills/api-integration/SKILL.md`.
 
 ## When to act
 

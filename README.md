@@ -22,7 +22,7 @@ pequeños y fáciles de entender.
 | `requirements.txt` | Dependencias (`requests`, `json5`)                  |
 | `requirements-dev.txt` | Dependencias de test (`pytest`, `pytest-cov`)   |
 | `pyproject.toml` | Config de pytest + coverage (alcance y omits)     |
-| `skills/*/SKILL.md` | Copias versionadas de los 3 skills (entregable) |
+| `opencode/skills/*/SKILL.md` | Copias versionadas de los 3 skills (entregable) |
 | `.opencode/skills/*/SKILL.md` | Skills activos que carga OpenCode 1.18.30 |
 | `docs/`   | `documentacion_proyecto_refactoring.pdf` + `MEJORAS_REALIZADAS.md` |
 
@@ -125,7 +125,7 @@ python3 -m pytest -q --cov=. --cov-report=term-missing
 
 Configuración reproducible en `pyproject.toml` (`[tool.coverage.run]` con `omit`
 justificado para legado muerto: `app.py`, `*_manager.py`, `utils.py`, `logger.py`,
-`legacy_config/`, `docs/`, `tests/`, `opencode/`, `.opencode/`, `skills/`).
+`legacy_config/`, `docs/`, `tests/`, `opencode/`, `.opencode/`).
 Alcance medido: `api/`, `services/`, `models/`, `ui/`, `exceptions/`, `config.py`,
 `constants.py`, `validators.py`, `main.py`. Resultado actual: **95 %** (ver detalle
 por módulo en `docs/MEJORAS_REALIZADAS.md`).
@@ -140,9 +140,9 @@ requisitos con copias sincronizadas:
 
 | Skill | Activo (carga OpenCode) | Entregable versionado |
 |---|---|---|
-| Refactoring | `.opencode/skills/refactoring/SKILL.md` | `skills/refactoring/SKILL.md` |
-| API Integration | `.opencode/skills/api-integration/SKILL.md` | `skills/api-integration/SKILL.md` |
-| Testing | `.opencode/skills/testing/SKILL.md` | `skills/testing/SKILL.md` |
+| Refactoring | `.opencode/skills/refactoring/SKILL.md` | `opencode/skills/refactoring/SKILL.md` |
+| API Integration | `.opencode/skills/api-integration/SKILL.md` | `opencode/skills/api-integration/SKILL.md` |
+| Testing | `.opencode/skills/testing/SKILL.md` | `opencode/skills/testing/SKILL.md` |
 
 `.gitignore` versiona ambos paths e ignora solo
 `.opencode/node_modules/`, `package-lock.json` y `server.lock.json`.
